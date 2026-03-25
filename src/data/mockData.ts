@@ -41,7 +41,7 @@ export const companies = [
 ];
 
 export const riskData = {
-  level: "Medium" as const,
+  level: "Medium" as "Low" | "Medium" | "High",
   volatility: [
     { day: "Mon", value: 18 },
     { day: "Tue", value: 22 },
