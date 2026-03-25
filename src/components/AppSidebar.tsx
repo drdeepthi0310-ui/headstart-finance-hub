@@ -23,9 +23,9 @@ import {
 
 const navItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Economic Indicators", url: "/indicators", icon: TrendingUp },
-  { title: "Company Analysis", url: "/company", icon: Building2 },
-  { title: "Risk Analysis", url: "/risk", icon: ShieldAlert },
+  { title: "Economic Indicators", url: "/economic-indicators", icon: TrendingUp },
+  { title: "Company Analysis", url: "/company-analysis", icon: Building2 },
+  { title: "Risk Analysis", url: "/risk-analysis", icon: ShieldAlert },
   { title: "Portfolio", url: "/portfolio", icon: PieChart },
   { title: "News", url: "/news", icon: Newspaper },
 ];
