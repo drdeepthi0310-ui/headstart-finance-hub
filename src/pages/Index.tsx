@@ -9,13 +9,21 @@ import { InvestmentRecommendations } from "@/components/dashboard/InvestmentReco
 import { NewsPanel } from "@/components/dashboard/NewsPanel";
 import { PortfolioSection } from "@/components/dashboard/PortfolioSection";
 import { ForecastChart } from "@/components/dashboard/ForecastChart";
-
+import { InvestmentInsights } from "@/components/dashboard/InvestmentInsights";
+import { OverallRiskIndicator } from "@/components/dashboard/OverallRiskIndicator";
+import { SDG8Section } from "@/components/dashboard/SDG8Section";
 const Index = () => {
   return (
     <DashboardLayout>
       <div className="space-y-6 max-w-[1400px]">
         {/* KPI Cards */}
         <KPICards />
+
+        {/* Investment Insights & Overall Risk */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <InvestmentInsights />
+          <OverallRiskIndicator />
+        </div>
 
         {/* Charts Row */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -41,6 +49,9 @@ const Index = () => {
 
         {/* Forecast */}
         <ForecastChart />
+
+        {/* SDG 8 */}
+        <SDG8Section />
 
         {/* News */}
         <NewsPanel />
