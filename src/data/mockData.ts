@@ -35,9 +35,9 @@ export const sectorInvestmentData = [
 ];
 
 export const companies = [
-  { name: "TechCorp", revenue: "$42B", profit: "$12B", marketCap: "$580B", growth: "+14.2%" },
-  { name: "FinServe", revenue: "$35B", profit: "$8B", marketCap: "$320B", growth: "+8.7%" },
-  { name: "GreenEnergy", revenue: "$28B", profit: "$6B", marketCap: "$180B", growth: "+22.1%" },
+  { name: "TechCorp", revenue: "₹3,500Cr", profit: "₹1,000Cr", marketCap: "₹48,300Cr", growth: "+14.2%" },
+  { name: "FinServe", revenue: "₹2,900Cr", profit: "₹670Cr", marketCap: "₹26,700Cr", growth: "+8.7%" },
+  { name: "GreenEnergy", revenue: "₹2,330Cr", profit: "₹500Cr", marketCap: "₹15,000Cr", growth: "+22.1%" },
 ];
 
 export const riskData = {

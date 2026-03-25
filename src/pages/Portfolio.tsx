@@ -68,20 +68,20 @@ const Portfolio = () => {
                 className="mb-2"
               />
               <p className="text-lg font-bold font-mono-data text-foreground">
-                ${investment.toLocaleString()}
+                ₹{investment.toLocaleString("en-IN")}
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-muted/30 rounded-lg p-4">
                 <p className="text-xs text-muted-foreground">Expected Return (12%)</p>
                 <p className="text-xl font-bold font-mono-data text-success">
-                  ${Number(expectedReturn).toLocaleString()}
+                  ₹{Number(expectedReturn).toLocaleString("en-IN")}
                 </p>
               </div>
               <div className="bg-muted/30 rounded-lg p-4">
                 <p className="text-xs text-muted-foreground">Risk Exposure (4%)</p>
                 <p className="text-xl font-bold font-mono-data text-warning">
-                  ${Number(riskAmount).toLocaleString()}
+                  ₹{Number(riskAmount).toLocaleString("en-IN")}
                 </p>
               </div>
             </div>

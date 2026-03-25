@@ -41,7 +41,7 @@ const CompanyAnalysisPage = () => {
 
         <div className="bg-card border border-border rounded-lg p-5">
           <h2 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">
-            Revenue vs Profit (in $B)
+            Revenue vs Profit (in ₹Cr)
           </h2>
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
