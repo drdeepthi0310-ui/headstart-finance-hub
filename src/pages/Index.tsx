@@ -19,6 +19,12 @@ const Index = () => {
         {/* KPI Cards */}
         <KPICards />
 
+        {/* Investment Insights & Overall Risk */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <InvestmentInsights />
+          <OverallRiskIndicator />
+        </div>
+
         {/* Charts Row */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <EconomicChart />
@@ -43,6 +49,9 @@ const Index = () => {
 
         {/* Forecast */}
         <ForecastChart />
+
+        {/* SDG 8 */}
+        <SDG8Section />
 
         {/* News */}
         <NewsPanel />
