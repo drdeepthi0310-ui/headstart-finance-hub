@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { DashboardLayout } from "@/components/DashboardLayout";
 import { KPICards } from "@/components/dashboard/KPICards";
 import { EconomicChart } from "@/components/dashboard/EconomicChart";
@@ -12,10 +13,30 @@ import { ForecastChart } from "@/components/dashboard/ForecastChart";
 import { InvestmentInsights } from "@/components/dashboard/InvestmentInsights";
 import { OverallRiskIndicator } from "@/components/dashboard/OverallRiskIndicator";
 import { SDG8Section } from "@/components/dashboard/SDG8Section";
+import {
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+} from "@/components/ui/select";
+
 const Index = () => {
+  const [timeRange, setTimeRange] = useState("monthly");
+
   return (
     <DashboardLayout>
       <div className="space-y-6 max-w-[1400px]">
+        {/* Time Range Filter */}
+        <div className="flex items-center justify-between">
+          <h1 className="text-xl font-bold text-foreground">Dashboard Overview</h1>
+          <Select value={timeRange} onValueChange={setTimeRange}>
+            <SelectTrigger className="w-[140px] bg-card border-border text-sm">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="monthly">Monthly</SelectItem>
+              <SelectItem value="yearly">Yearly</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
         {/* KPI Cards */}
         <KPICards />
 
