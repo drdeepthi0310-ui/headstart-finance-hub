@@ -1,16 +1,52 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { DashboardLayout } from "@/components/DashboardLayout";
+import { KPICards } from "@/components/dashboard/KPICards";
+import { EconomicChart } from "@/components/dashboard/EconomicChart";
+import { CompanyBarChart } from "@/components/dashboard/CompanyBarChart";
+import { SectorPieChart } from "@/components/dashboard/SectorPieChart";
+import { CompanyAnalysis } from "@/components/dashboard/CompanyAnalysis";
+import { RiskAnalysis } from "@/components/dashboard/RiskAnalysis";
+import { InvestmentRecommendations } from "@/components/dashboard/InvestmentRecommendations";
+import { NewsPanel } from "@/components/dashboard/NewsPanel";
+import { PortfolioSection } from "@/components/dashboard/PortfolioSection";
+import { ForecastChart } from "@/components/dashboard/ForecastChart";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <DashboardLayout>
+      <div className="space-y-6 max-w-[1400px]">
+        {/* KPI Cards */}
+        <KPICards />
+
+        {/* Charts Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <EconomicChart />
+          <CompanyBarChart />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <SectorPieChart />
+          <div className="lg:col-span-2">
+            <CompanyAnalysis />
+          </div>
+        </div>
+
+        {/* Risk & Recommendations */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <RiskAnalysis />
+          <InvestmentRecommendations />
+        </div>
+
+        {/* Portfolio */}
+        <PortfolioSection />
+
+        {/* Forecast */}
+        <ForecastChart />
+
+        {/* News */}
+        <NewsPanel />
+      </div>
+    </DashboardLayout>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
