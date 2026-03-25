@@ -9,7 +9,9 @@ import { InvestmentRecommendations } from "@/components/dashboard/InvestmentReco
 import { NewsPanel } from "@/components/dashboard/NewsPanel";
 import { PortfolioSection } from "@/components/dashboard/PortfolioSection";
 import { ForecastChart } from "@/components/dashboard/ForecastChart";
-
+import { InvestmentInsights } from "@/components/dashboard/InvestmentInsights";
+import { OverallRiskIndicator } from "@/components/dashboard/OverallRiskIndicator";
+import { SDG8Section } from "@/components/dashboard/SDG8Section";
 const Index = () => {
   return (
     <DashboardLayout>
