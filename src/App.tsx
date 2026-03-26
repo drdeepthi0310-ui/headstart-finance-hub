@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { RiskProvider } from "@/contexts/RiskContext";
 import Index from "./pages/Index.tsx";
 import EconomicIndicators from "./pages/EconomicIndicators.tsx";
 import CompanyAnalysis from "./pages/CompanyAnalysis.tsx";
@@ -18,18 +19,20 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/economic-indicators" element={<EconomicIndicators />} />
-          <Route path="/company-analysis" element={<CompanyAnalysis />} />
-          <Route path="/risk-analysis" element={<RiskAnalysis />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/news" element={<News />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <RiskProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/economic-indicators" element={<EconomicIndicators />} />
+            <Route path="/company-analysis" element={<CompanyAnalysis />} />
+            <Route path="/risk-analysis" element={<RiskAnalysis />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/news" element={<News />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </RiskProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

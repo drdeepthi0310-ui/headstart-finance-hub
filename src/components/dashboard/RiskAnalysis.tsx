@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, Tooltip } from "recharts";
 import { riskData } from "@/data/mockData";
 import { ShieldAlert } from "lucide-react";
+import { useRisk } from "@/contexts/RiskContext";
 
 const riskConfig = {
   Low: {
@@ -33,11 +33,9 @@ const riskConfig = {
   },
 };
 
-type RiskLevel = "Low" | "Medium" | "High";
-
 export function RiskAnalysis() {
-  const [level, setLevel] = useState<RiskLevel>(riskData.level);
-  const config = riskConfig[level];
+  const { riskLevel, setRiskLevel } = useRisk();
+  const config = riskConfig[riskLevel];
 
   const chartData = riskData.volatility.map((d) => ({
     ...d,
@@ -50,14 +48,13 @@ export function RiskAnalysis() {
         Risk Analysis
       </h2>
 
-      {/* Risk Level Selector */}
       <div className="flex items-center gap-2 mb-4">
         {(["Low", "Medium", "High"] as const).map((l) => (
           <button
             key={l}
-            onClick={() => setLevel(l)}
+            onClick={() => setRiskLevel(l)}
             className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-colors ${
-              l === level
+              l === riskLevel
                 ? `${riskConfig[l].bg} ${riskConfig[l].color} ring-1 ring-current`
                 : "bg-muted/30 text-muted-foreground hover:text-foreground"
             }`}
@@ -67,17 +64,15 @@ export function RiskAnalysis() {
         ))}
       </div>
 
-      {/* Current Level */}
       <div className="flex items-center gap-3 mb-2">
-        <ShieldAlert className={`h-5 w-5 ${config.color} ${level === "High" ? "animate-pulse-subtle" : ""}`} />
+        <ShieldAlert className={`h-5 w-5 ${config.color} ${riskLevel === "High" ? "animate-pulse-subtle" : ""}`} />
         <div>
           <p className="text-xs text-muted-foreground">Current Market Risk Level</p>
-          <p className={`text-lg font-bold font-mono-data ${config.color}`}>{level}</p>
+          <p className={`text-lg font-bold font-mono-data ${config.color}`}>{riskLevel}</p>
         </div>
       </div>
       <p className={`text-xs mb-4 ${config.color} opacity-80`}>{config.desc}</p>
 
-      {/* Volatility Chart */}
       <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wider">Volatility Index</p>
       <div className="h-40">
         <ResponsiveContainer width="100%" height="100%">
@@ -93,13 +88,7 @@ export function RiskAnalysis() {
                 fontSize: "12px",
               }}
             />
-            <Area
-              type="monotone"
-              dataKey="value"
-              stroke={config.stroke}
-              fill={config.fill}
-              strokeWidth={2}
-            />
+            <Area type="monotone" dataKey="value" stroke={config.stroke} fill={config.fill} strokeWidth={2} />
           </AreaChart>
         </ResponsiveContainer>
       </div>
