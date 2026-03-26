@@ -19,26 +19,45 @@ import {
 
 const Index = () => {
   const [timeRange, setTimeRange] = useState("monthly");
+  const [viewMode, setViewMode] = useState<"growth" | "stability">("growth");
 
   return (
     <DashboardLayout>
       <div className="space-y-6 max-w-[1400px]">
-        {/* Time Range Filter */}
-        <div className="flex items-center justify-between">
+        {/* Time Range Filter & View Mode */}
+        <div className="flex items-center justify-between flex-wrap gap-3">
           <h1 className="text-xl font-bold text-foreground">Dashboard Overview</h1>
-          <Select value={timeRange} onValueChange={setTimeRange}>
-            <SelectTrigger className="w-[140px] bg-card border-border text-sm">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="monthly">Monthly</SelectItem>
-              <SelectItem value="yearly">Yearly</SelectItem>
-            </SelectContent>
-          </Select>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center bg-card border border-border rounded-lg p-0.5">
+              {(["growth", "stability"] as const).map((mode) => (
+                <button
+                  key={mode}
+                  onClick={() => setViewMode(mode)}
+                  className={`px-3 py-1.5 rounded-md text-xs font-semibold capitalize transition-colors ${
+                    viewMode === mode
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {mode}
+                </button>
+              ))}
+            </div>
+            <Select value={timeRange} onValueChange={setTimeRange}>
+              <SelectTrigger className="w-[140px] bg-card border-border text-sm">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="monthly">Monthly</SelectItem>
+                <SelectItem value="quarterly">Quarterly</SelectItem>
+                <SelectItem value="yearly">Yearly</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         {/* KPI Cards */}
-        <KPICards />
+        <KPICards viewMode={viewMode} />
 
         {/* Investment Insights & Overall Risk */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
