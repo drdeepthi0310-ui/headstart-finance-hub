@@ -1,4 +1,5 @@
 import { ShieldAlert } from "lucide-react";
+import { useRisk } from "@/contexts/RiskContext";
 
 const riskConfig = {
   Low: { color: "text-success", bg: "bg-success/10", border: "border-success/30" },
@@ -7,11 +8,11 @@ const riskConfig = {
 };
 
 export function OverallRiskIndicator() {
-  const level: "Low" | "Medium" | "High" = "Medium";
-  const config = riskConfig[level];
+  const { riskLevel, setRiskLevel } = useRisk();
+  const config = riskConfig[riskLevel];
 
   return (
-    <div className={`bg-card border ${config.border} rounded-lg p-5 animate-fade-up`}>
+    <div className={`bg-card border ${config.border} rounded-lg p-5 animate-fade-up transition-colors`}>
       <h2 className="text-sm font-semibold text-foreground mb-3 uppercase tracking-wider">
         Overall Risk Indicator
       </h2>
@@ -21,20 +22,21 @@ export function OverallRiskIndicator() {
         </div>
         <div>
           <p className="text-xs text-muted-foreground">Current Market Risk Level</p>
-          <p className={`text-2xl font-bold font-mono-data ${config.color}`}>{level}</p>
+          <p className={`text-2xl font-bold font-mono-data ${config.color}`}>{riskLevel}</p>
         </div>
         <div className="ml-auto flex gap-2">
           {(["Low", "Medium", "High"] as const).map((l) => (
-            <div
+            <button
               key={l}
-              className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                l === level
+              onClick={() => setRiskLevel(l)}
+              className={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${
+                l === riskLevel
                   ? `${riskConfig[l].bg} ${riskConfig[l].color} ring-1 ring-current`
-                  : "bg-muted/30 text-muted-foreground"
+                  : "bg-muted/30 text-muted-foreground hover:text-foreground"
               }`}
             >
               {l}
-            </div>
+            </button>
           ))}
         </div>
       </div>

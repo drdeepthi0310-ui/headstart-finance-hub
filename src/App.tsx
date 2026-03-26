@@ -18,18 +18,20 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/economic-indicators" element={<EconomicIndicators />} />
-          <Route path="/company-analysis" element={<CompanyAnalysis />} />
-          <Route path="/risk-analysis" element={<RiskAnalysis />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/news" element={<News />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <RiskProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/economic-indicators" element={<EconomicIndicators />} />
+            <Route path="/company-analysis" element={<CompanyAnalysis />} />
+            <Route path="/risk-analysis" element={<RiskAnalysis />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/news" element={<News />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </RiskProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
